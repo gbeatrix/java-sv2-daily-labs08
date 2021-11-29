@@ -32,23 +32,17 @@ class NumberSequenceTest {
         assertEquals(100, numbers.size());
 
         int minValue = numbers.get(0);
-        for (int number : numbers) {
-            minValue = Math.min(number, minValue);
-        }
-        assertTrue(15 <= minValue);
-
         int maxValue = numbers.get(0);
-        for (int number : numbers) {
-            maxValue = Math.max(number, maxValue);
-        }
-        assertTrue(25 >= maxValue);
-
         List<Integer> distincts = new ArrayList<>();
         for (int number : numbers) {
             if (!distincts.contains(number)) {
+                minValue = Math.min(number, minValue);
+                maxValue = Math.max(number, maxValue);
                 distincts.add(number);
             }
         }
+        assertTrue(15 <= minValue);
+        assertTrue(25 >= maxValue);
         assertTrue(8 <= distincts.size());
         assertTrue(distincts.size() <= 11);
     }
