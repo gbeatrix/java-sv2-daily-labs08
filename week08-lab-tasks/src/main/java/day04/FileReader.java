@@ -22,8 +22,8 @@ public class FileReader {
                 int day = Integer.parseInt(contents.get(i).substring(2, 4).trim());
                 int dailyMax = Integer.parseInt(contents.get(i).substring(6, 8).trim());
                 int dailyMin = Integer.parseInt(contents.get(i).substring(12, 14).trim());
-                if(dailyMax - dailyMin < min){
-                    min =dailyMax - dailyMin;
+                if (dailyMax - dailyMin < min) {
+                    min = dailyMax - dailyMin;
                     dayOfMinTemp = day;
                 }
             } catch (NumberFormatException err) {
@@ -31,5 +31,25 @@ public class FileReader {
             }
         }
         return dayOfMinTemp;
+    }
+
+    public String findSmallestDifference() throws IOException {
+        Path path = Paths.get("src/main/resources/football.dat");
+        List<String> contents = Files.readAllLines(path);
+        int min = Integer.MAX_VALUE;
+        String result = "";
+        for (String line : contents) {
+            try {
+                int score = Integer.parseInt(line.substring(42, 44).trim());
+                int got = Integer.parseInt(line.substring(50, 52).trim());
+                if (score - got < min) {
+                    min = score - got;
+                    result = line.substring(6, 23).trim();
+                }
+            } catch (NumberFormatException err) {
+                continue;
+            }
+        }
+        return result;
     }
 }

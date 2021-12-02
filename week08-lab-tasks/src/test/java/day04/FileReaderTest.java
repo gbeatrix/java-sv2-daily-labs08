@@ -2,6 +2,8 @@ package day04;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileReaderTest {
@@ -17,5 +19,10 @@ class FileReaderTest {
         IllegalStateException err = assertThrows(IllegalStateException.class,
                 () -> new FileReader().findSmallestTemperatureSpread("filename"));
         assertEquals("Error reading file.", err.getMessage());
+    }
+
+    @Test
+    void testFindSmallestDifference() throws IOException {
+        assertEquals("Leicester", new FileReader().findSmallestDifference());
     }
 }
