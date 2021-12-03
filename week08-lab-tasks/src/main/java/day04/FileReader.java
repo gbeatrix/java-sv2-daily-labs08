@@ -40,10 +40,10 @@ public class FileReader {
         String result = "";
         for (String line : contents) {
             try {
-                int score = Integer.parseInt(line.substring(42, 44).trim());
+                int score = Integer.parseInt(line.substring(43, 45).trim());
                 int got = Integer.parseInt(line.substring(50, 52).trim());
-                if (score - got < min) {
-                    min = score - got;
+                if (Math.abs(score - got) < min) {
+                    min = Math.abs(score - got);
                     result = line.substring(6, 23).trim();
                 }
             } catch (NumberFormatException err) {

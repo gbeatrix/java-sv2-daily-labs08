@@ -23,6 +23,6 @@ class FileReaderTest {
 
     @Test
     void testFindSmallestDifference() throws IOException {
-        assertEquals("Leicester", new FileReader().findSmallestDifference());
+        assertEquals("Aston_Villa", new FileReader().findSmallestDifference());
     }
 }
