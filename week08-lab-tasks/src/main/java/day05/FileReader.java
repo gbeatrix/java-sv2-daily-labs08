@@ -8,11 +8,18 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FileReader {
-    String solutionString;
-    int solutionInteger;
-    int min = Integer.MAX_VALUE;
+    private String solutionString;
+    private int solutionInteger;
+    private int min;
+
+    void init(){
+        solutionInteger = 0;
+        solutionString = "";
+        min = Integer.MAX_VALUE;
+    }
 
     public int findSmallestTemperatureSpread(String filename) {
+        init();
         List<String> contents = getContents(getPath(filename));
         List<Integer> exclusions = Arrays.asList(0, 1, 32);
         for (int i = 0; i < contents.size(); i++) {
@@ -46,6 +53,7 @@ public class FileReader {
     }
 
     public String findSmallestDifference(String filename) {
+        init();
         List<String> contents = getContents(getPath(filename));
         List<Integer> exclusions = Arrays.asList(0, 18);
         for (int i = 0; i < contents.size(); i++) {
